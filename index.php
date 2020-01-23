@@ -2,18 +2,14 @@
 <?php
 // on definit la session
 session_start();
-
- 
 if(!isset($_SESSION['username']))
 {
-    header('Location: php/login.php');
-    exit;
+header('Location: php/login.php');
+exit;
 }
-
 // appel de la connexion a la base de données
 require 'php/fonctions.php';
 $bdd = getBdd();
-
 // on recupere les info de l'utilisateur
 $requeteInfoUtilisateur = "SELECT * FROM account WHERE username=? AND password=?";
 $resultatInfoUtilisateur = $bdd->prepare($requeteInfoUtilisateur);
@@ -21,12 +17,8 @@ $username = $_SESSION['username'];
 $password = $_SESSION['password'];
 $resultatInfoUtilisateur->execute(array($username, $password));
 $donneesUtilisateur = $resultatInfoUtilisateur->fetch();
-
 $resultatInfoUtilisateur->closeCursor();
-
-
 ?>
-
 <!doctype html>
 <html lang="fr">
 
@@ -34,95 +26,71 @@ $resultatInfoUtilisateur->closeCursor();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="css/accueil.css" media="screen" type="text/css">
     <title>GBAF</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <!-- Header du site -->
         <header>
-            <div class="navBar">
-                <nav class="navbar bg-light navbar-light">
-                    <!-- logo GBAF -->
-                    <div class="logo">
-                        <a href="index.php"><img src="img/logoGBAF100_100.png" alt=""></a>
+            <div class="barreDeNavigation">
+                <nav class="navbar fixed-top col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="logo col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <a href="index.php"><img src="img/logoGBAF100_100.png" alt=""></a>&nbsp;
                     </div>
-                    <!-- bare de navigation -->
-                    <div class="userNavBar">
-                        <div class="iconePlusNom">
-                            <!-- icone image de l'utilisateur -->
-                            <div class="imgUser">
-                                <img src="img/icons8-male_user.png" alt="utilisateur" class="iconeUser">
-                            </div>
-                            <!-- information sur l'utilisateur -->
-                            <div class="identiteUser">
-                                <h4><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h4>
-                                <h4><?php echo($donneesUtilisateur['prenom']) ?></h4>
+                    <div class="username col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class="dropdown col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                            <button class="boutonsMenu"><img src="img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
+                            <div class="dropdown-content">
+                                <a class="dropdown-item" href="php/parametreUser.php"><img src="img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
+                                <div class="divider"></div>
+                                <a class="dropdown-item" href="php/logout.php"><img src="img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
                         </div>
-                        <div class="compteUser">
-                            <!-- boutton paramètre du compteUser -->
-                            <div class="parametreUser">
-                                <a href="parametreUser.php"><img src="img/icons8-settings.png"
-                                        alt="icone de parametrege du compte"></a>
+                        <!-- information sur l'utilisateur -->
+                        <div class="identiteUser col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <div class="nom">
+                                <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
                             </div>
-                            <!-- boutton de deconnexion -->
-                            <div class="logout">
-                                <a href="php/logout.php">Déconnexion</a>
+                            <div class="prenom">
+                                <h5><?php echo($donneesUtilisateur['prenom']) ?></h5>
                             </div>
                         </div>
                     </div>
+                    
                 </nav>
             </div>
         </header>
-
         <!-- Section présentation -->
-        <section class="presentation">
-
+        <section class="presentation col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <img src="img/placeBourse.jpg" alt="place de la bourse bordeaux" class="imgPresentation">
             <div class="textePresentation">
-                <h1>Groupement Banque-Assurance Français</h1>
                 <div class="descriptionGbaf">
-                    <div class="debutDescription">
-                        <p>Le Groupement Banque Assurance Français​ (GBAF) est une fédération représentant les 6 grands
-                            groupes français :</p>
-                        <ul>
-                            <li>BNP Paribas ;</li>
-                            <li>BPCE;</li>
-                            <li>Crédit Agricole ;</li>
-                            <li>Crédit Mutuel-CIC ;</li>
-                            <li>Société Générale ;</li>
-                            <li>La Banque Postale.</li>
-                        </ul>
-                    </div>
+                    <h1>Groupement Banque-Assurance Français</h1>
                     <div class="finDescription">
-                        <p>Même s’il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même
-                            façon pour gérer près de 80 millions de comptes sur le territoire national.
-                            Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la
-                            réglementation financière française. Sa mission est de promouvoir l'activité bancaire à
+                        <p>Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de
+                            la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à
                             l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
                     </div>
                 </div>
-                <img src="img/placeBourse.jpg" alt="place de la bourse bordeaux" class="imgPresentation">
             </div>
         </section>
-
         <!-- Section acteurs -->
         <section class="acteurs">
             <div class="contenuActeurs">
                 <h2>Acteurs et Partenaires</h2>
                 <div class="contenuActeur">
                     <?php
-                        $requeteActeurs = "SELECT * FROM acteur";
-                        $resultatActeurs =$bdd->prepare($requeteActeurs);
-                        $resultatActeurs->execute();
-                        while($donneesActeurs = $resultatActeurs->fetch())
-                        {
-                    ?>
+                            $requeteActeurs = "SELECT * FROM acteur";
+                            $resultatActeurs =$bdd->prepare($requeteActeurs);
+                            $resultatActeurs->execute();
+                            while($donneesActeurs = $resultatActeurs->fetch())
+                            {
+                            ?>
                     <div class="acteur">
                         <div class="logoActeur col-md-3">
                             <img src="<?php echo $donneesActeurs['logo'] ?>" alt="logo acteur">
@@ -132,14 +100,14 @@ $resultatInfoUtilisateur->closeCursor();
                                 <?php echo $donneesActeurs['acteur'] ?>
                             </h3>
                             <p>
-                                <?php 
+                                <?php
                                         // portion de la description
                                         $extrait = substr($donneesActeurs['description'], 0, 120);
                                         // trouver le dernier espace de l'extrait
                                         $espace = strrpos($extrait, ' ');
                                         // recupere l'extrait en prenant en compte l'espace
-                                        echo substr($extrait, 0, $espace). ' ...'; 
-                                ?>
+                                        echo substr($extrait, 0, $espace). ' ...';
+                                        ?>
                             </p>
                         </div>
                         <div class="lienActeur col-md-2">
@@ -147,31 +115,27 @@ $resultatInfoUtilisateur->closeCursor();
                                 suite</a>
                         </div>
                     </div>
-
-
                     <?php
-                        }
-
-                        $resultatActeurs->closeCursor();
-
-                        
-                    ?>
+                            }
+                            $resultatActeurs->closeCursor();
+                            
+                            ?>
                 </div>
             </div>
         </section>
-
+    </div>
+    <div class="siteFooter">
         <!-- Footer -->
-        <footer>
-            <ul>
-                <li><a href="php/mentionsLegales.php">Mentions légales</a></li>
-                <li>
-                    <p>|</p>
-                </li>
-                <li><a href="php/contact.php">Contact</a></li>
-            </ul>
+        <footer class="page-footer font-small">
+            <div class="copyright">
+                <p>&copy 2020 - GBAF</p>
+            </div>
+            <div class="liensFooter">
+                <a href="mentionsLegales.php" class="mentionsLegales">Mentions légales</a>
+                <a href="contact.php" class="contact">Contact</a>
+            </div>
         </footer>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

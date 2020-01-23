@@ -3,88 +3,68 @@ body{
     width: 100%;
     height: 100%;
 }
+
 .container{
-    background: #fff;
-}
-
-/* Paramètre de la navbar */
-.identiteUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.iconePlusNom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.userNavBar {
-    width: 25%;
-}
-.compteUser {
-    margin-left: 50%;
-    justify-content: space-between;
-}
-.logo {
-    width: 50%;
-}
-.iconeUser {
-    width: 150%;
-}
-
-.compteUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-
-/* section présentation de la gbaf*/
-.presentation {
+    width:100%;
+    height: 100%;
+    margin:0 auto;
     margin-top: 10%;
 }
-h1{
-    color: #ff0000;
+
+/* Logo de la GBAF*/
+.logoHeader {
     text-align: center;
-    margin-bottom: 5%;
-}
-h2 {
-    text-align: center;
-    margin: 5% auto;
-}
-.descriptionGbaf {
-    display: flex;
-    flex-direction: row;
-}
-.debutDescription {
-    width: 50%;
-}
-.finDescription {
-    width: 50%;
+    padding: 5%;
+    margin: auto;
+    padding-bottom: 10%;
 }
 
+/* Formulaire de connexion*/
+form {
+    width:40%;
+    padding: 30px;
+    margin: 0 auto;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
 
+/* champ utilisateur et champ mot de passe */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 
-.imgPresentation {
+/* les autres boutons  */
+input[type=submit] {
+    background-color: #ff0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
     width: 100%;
 }
 
-
-
-.acteur {
-    margin: 2%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+input[type=submit]:hover {
+    background-color: white;
+    color: #ff0000;
+    border: 1px solid #ff0000;
 }
 
-.contenuActeur{
-    border: 1px solid black;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+/* Liens en bas du formulaire de connexion*/
+.inscriptionMotDePass {
+    list-style-type: none;
+    padding: 10%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Les mentions légales */
+.mentionsLegales {
+    text-align: center;
 }

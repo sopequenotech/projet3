@@ -2,7 +2,7 @@
 
 
 // on vérifie que les données du formulaire sont présentes
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['secretQuestion']) && isset($_POST['secretReponse'])) 
+if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['secretQuestion']) && !empty($_POST['secretReponse'])) 
 {
     // appel de la connexion a la base de données
     require 'fonctions.php';
@@ -36,9 +36,9 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['username'])
 
 if ($authOK == true) 
 {
-    header('Location: ../index.php');
+    header('Location: ../login.php?succes');
 } else 
 {
-    header('Location: login.php');
+    header('Location: register.php?nosucces');
 }
 ?>
