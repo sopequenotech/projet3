@@ -67,7 +67,7 @@ $resultatInfoUtilisateur->closeCursor();
         </header>
         <!-- Section présentation -->
         <section class="presentation col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <img src="img/placeBourse.jpg" alt="place de la bourse bordeaux" class="imgPresentation">
+            <img src="img/bruno-adamo-WBYKlk-awg0-unsplash.jpg" alt="place de la bourse bordeaux" class="imgPresentation">
             <div class="textePresentation">
                 <div class="descriptionGbaf">
                     <h1>Groupement Banque-Assurance Français</h1>
@@ -132,7 +132,7 @@ $resultatInfoUtilisateur->closeCursor();
             </div>
             <div class="liensFooter">
                 <a href="mentionsLegales.php" class="mentionsLegales">Mentions légales</a>
-                <a href="contact.php" class="contact">Contact</a>
+                <a href="php/contact.php" class="contact">Contact</a>
             </div>
         </footer>
     </div>
