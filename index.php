@@ -1,4 +1,3 @@
-<!--demarrage de la session -->
 <?php
 // on definit la session
 session_start();
