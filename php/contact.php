@@ -77,7 +77,7 @@ $idUser = $_SESSION['idUser'];
         <div class="contenuContactPage container-fluid">
             <!-- Contenue des informations sur l'utilisateur -->
             <div class="contactForm">
-                <form action="verification.php" method="POST">
+                <form action="" method="POST">
                     <div class="enteteForm">
                         <h1>Contact</h1>
                         <p>Une remarque ? une sugestion ? n'hésitez pas à nous écrire.</p>
