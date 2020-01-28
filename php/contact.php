@@ -111,8 +111,6 @@ $idUser = $_SESSION['idUser'];
                 //verification des donnée du foemulaire
                 if (!empty($_POST['nom']) && !empty(['mail']) && !empty(['sujet']) && !empty(['message']))
                 {
-                    ini_set('display_errors', 1);
-                    errot_reporting( E_ALL );
                     $from = $_POST['mail'];
                     $to ="kelly.sossoe@muggum.fr";
                     $subject = $_POST['sujet'];
