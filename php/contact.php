@@ -112,7 +112,7 @@ $idUser = $_SESSION['idUser'];
                 if (!empty($_POST['nom']) && !empty(['mail']) && !empty(['sujet']) && !empty(['message']))
                 {
                     $from = $_POST['mail'];
-                    $to ="kelly.sossoe@muggum.fr";
+                    $to ="contact@projet3.kellysossoe.xyz";
                     $subject = $_POST['sujet'];
                     $message = $_POST['message'];
                     $headers = "From:" . $from;
