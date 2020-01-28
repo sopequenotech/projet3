@@ -107,6 +107,21 @@ $idUser = $_SESSION['idUser'];
                         <input type="submit" id='submit' value='Envoyer'>
                     </div>
                 </form>
+                <p><?php 
+                //verification des donnée du foemulaire
+                if (!empty($_POST['nom']) && !empty(['mail']) && !empty(['sujet']) && !empty(['message']))
+                {
+                    ini_set('display_errors', 1);
+                    errot_reporting( E_ALL );
+                    $from = $_POST['mail'];
+                    $to ="kelly.sossoe@muggum.fr";
+                    $subject = $_POST['sujet'];
+                    $message = $_POST['message'];
+                    $headers = "From:" . $from;
+                    mail($to,$subject,$message, $headers);
+                    echo "Méssage envoyer !";
+
+                } ?></p>
             </div>
             <!-- Image de l'utilisateur -->
             <div class="imageContact col-sm-6 col-md-6 col-lg-6 col-xl-6">
