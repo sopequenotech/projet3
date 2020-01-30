@@ -36,9 +36,9 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username
 
 if ($authOK == true) 
 {
-    header('Location: ../login.php?succes');
+    header('Location: login.php?succes=true');
 } else 
 {
-    header('Location: register.php?nosucces');
+    header('Location: register.php?succes=false');
 }
 ?>

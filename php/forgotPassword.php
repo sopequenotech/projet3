@@ -7,38 +7,47 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css">
-            <title>Mot de passe oublié</title>
-        </head>
+        <link rel="stylesheet" href="../css/forgotPassword.css" media="screen" type="text/css">
+        <title>Mot de passe oublie</title>
+    </head>
         <body>
             <div class="container">
-                <header>
-                    <img src="../img/logoGBAF100_100.png" alt="logo gbaf">
-                </header>
                 <div class="forgotPasswordForm">
                     <form action="newPassword.php" method="POST">
-                        <h1>Mot de passe oublié</h1>
-                        <label><b>Nom d'utilisateur</b></label>
-                        <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
-                        <label><b>Quel est votre question secrete ?</b></label>
-                        <input type="text" placeholder="Entrer votre question secrète" name="questionSecret" required>
-                        <label><b>Quel est votre réponse secrete ?</b></label>
-                        <input type="text" placeholder="Entrer votre réponse secrète" name="reponseSecret" required>
-                        <input type="submit" id='submit' value='Modifier votre mot de passe'>
-                        <ul class="inscriptionMotDePass">
-                            <li class="inscription"><a href="register.php">Inscription</a></li>
-                        </ul>
+                        <!-- Titre login form -->
+                        <div class="logoHeader">
+                            <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="logo gbaf" class="logo"></a>
+                        </div>
+                        <div class="username">
+                            <label><b>Nom d'utilisateur</b></label>
+                            <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+                        </div>
+                        <div class="secretQuestion">
+                            <label><b>Question secrète</b></label>
+                            <br>
+                            <select placeholder="Choisissez votre question secrete" name="secretQuestion">
+                                <option>quelle est votre couleur préférée</option>
+                                <option>quelle est votre ville favorite</option>
+                                <option>quelle est votre équipe sportive favorite</option>
+                                <option>Quelle était le nom de votre école primaire</option>
+                            </select>
+                        </div>
+                        <div class="secretResponse">
+                            <label><b>Quel est votre réponse secrete ?</b></label>
+                            <input type="text" placeholder="Entrer votre réponse secrète" name="reponseSecret" required>
+                        </div>
+                        <div class="submitLogin">
+                            <input type="submit" id='submit' value='Modifier votre mot de passe'>
+                        </div>
+                        <!-- Liens en dessous du formulaire de connexion -->
+                        <div class="liensFormLogin">
+                            <ul class="inscriptionMotDePass">
+                                <li class="connexion"><a href="../index.php">Connexion</a></li>
+                                <li class="inscription"><a href="register.php">Inscription</a></li>
+                            </ul>
+                        </div>
                     </form>
                 </div>
-                <footer>
-                    <ul>
-                        <li><a href="mentionsLegales.php">Mentions légales</a></li>
-                        <li>
-                            <p>|</p>
-                        </li>
-                        <li><a href="contact.php">Contact</a></li>
-                    </ul>
-                </footer>
             </div>
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->

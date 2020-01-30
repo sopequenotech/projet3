@@ -1,9 +1,3 @@
-<?php
-if (isset($_GET['succes']))
-{
-echo "<h2> Vous êtes bien inscrit, vous pouvez vous connecter <h2>";
-}
-?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -13,17 +7,23 @@ echo "<h2> Vous êtes bien inscrit, vous pouvez vous connecter <h2>";
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css">
-            <title>Connexion</title>
-        </head>
+        <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css">
+        <title>Connexion</title>
+    </head>
         <body>
             <div class="container">
                 <!-- Formulaire de connexion -->
                 <div class="loginForm">
                     <form action="verification.php" method="POST">
+                        <span><?php 
+                        if (isset($_GET['succes']) && $_GET['succes'] == true)
+                        {
+                            echo "<h2> Vous êtes bien inscrit, vous pouvez vous connecter <h2>";
+                        }
+                        ?></span>
                         <!-- Titre login form -->
                         <div class="logoHeader">
-                            <a href="../index.php"><img src="../img/logoGBAF100_100.png" alt="logo gbaf"></a>
+                            <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="logo gbaf" class="logo"></a>
                         </div>
                         <!-- Champs utilisateur -->
                         <div class="username">
