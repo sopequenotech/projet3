@@ -23,7 +23,7 @@ echo "<h2> Vous n'êtes pas inscrit, vous devez remplir tous les champs. <h2>";
                     <form action="enregistrement.php" method="POST">
                         <!-- Titre login form -->
                         <div class="logoHeader">
-                            <a href="../index.php"><img src="../img/logoGBAF100_100.png" alt="logo gbaf"></a>
+                            <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="logo gbaf" class="logo"></a>
                         </div>
                         <!-- Champs nom -->
                         <div class="nom">

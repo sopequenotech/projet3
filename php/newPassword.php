@@ -32,50 +32,44 @@ if (isset($_POST['username']) && isset($_POST['questionSecret']) && isset($_POST
 <html lang="fr">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css">
-  <title>Nouveau mot de passe</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css">
+    <title>Nouveau Mot De Passe</title>
 </head>
 
 <body>
   <div class="container">
-    <header>
-      <img src="../img/logoGBAF100_100.png" alt="logo gbaf">
-    </header>
 
     <div class="newPasswordForm">
-      <form action="updatePassword.php" method="POST">
-        <h1>Modifier votre mot de passe</h1>
-
-        <label><b>Nouveau mot de passe</b></label>
-        <input type="password" placeholder="Saisir le nouveau mot de passe" name="password1" required>
-
-        <label><b>Ressaisir le mot de passe</b></label>
-        <input type="password" placeholder="Ressaisir le mot de passe" name="password2" required>
-
-        <input type="submit" id='submit' value='MODIFIER'>
-
-        <ul class="inscriptionMotDePass">
-          <li class="inscription"><a href="register.php">Inscription</a></li>
-        </ul>
-
-      </form>
+        <form action="updatePassword.php" method="POST">
+            <!-- Titre login form -->
+            <div class="logoHeader">
+                <a href="../index.php"><img src="../img/logoGBAF100_100.png" alt="logo gbaf"></a>
+            </div>
+            <div class="password1">
+                <label><b>Nouveau mot de passe</b></label>
+                <input type="password" placeholder="Saisir le nouveau mot de passe" name="password1" required>
+            </div>
+            <div class="password2">
+                <label><b>Ressaisir le mot de passe</b></label>
+                <input type="password" placeholder="Ressaisir le mot de passe" name="password2" required>
+            </div>
+            <div class="bouttonModifier">
+                <input type="submit" id='submit' value='MODIFIER'>
+            </div>
+            <div class="liensFormLogin">
+                <ul class="inscriptionMotDePass">
+                    <li class="connexion"><a href="../index.php">Connexion</a></li>
+                    <li class="inscription"><a href="register.php">Inscription</a></li>
+                </ul>
+            </div>
+        </form>
     </div>
-    <footer>
-      <ul>
-        <li><a href="mentionsLegales.php">Mentions légales</a></li>
-        <li>
-          <p>|</p>
-        </li>
-        <li><a href="contact.php">Contact</a></li>
-      </ul>
-    </footer>
   </div>
 
   <!-- Optional JavaScript -->

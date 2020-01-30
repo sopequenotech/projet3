@@ -64,48 +64,58 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/acteurPage.css" media="screen" type="text/css">
-    <title><?php echo $donneesActeur['acteur']?> </title>
+    <title><?php echo htmlspecialchars($donneesActeur['acteur']); ?></title>
 </head>
 
 <body>
-    <div class="container">
-
+    <div class="container-fluid">
         <!-- Header du site -->
         <header>
-            <div class="navBar">
-                <nav class="navbar bg-light navbar-light">
+            <div class="barreDeNavigation">
+                <nav class="navbar fixed-top">
                     <div class="logo">
-                        <img src="../img/logoGBAF100_100.png" alt="">
+                        <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="" class="logoGbaf"></a>&nbsp;
                     </div>
-                    <div class="userNavBar">
-                        <div class="imgUser">
-                            <img src="../img/boy.png" alt="utilisateur">
-                        </div>
-                        <div class="compteUser">
-                            <div class="identiteUser">
-                                <h3><?php echo($donneesUtilisateur['nom']) ?></h3>
-                                <p><?php echo($donneesUtilisateur['prenom']) ?></p>
-                            </div>
-                            <div class="logout">
-                                <a href="logout.php">Déconnexion</a>
+                    <div class="username">
+                        <div class="dropdown">
+                            <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
+                            <div class="dropdown-content">
+                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
+                                <div class="divider"></div>
+                                <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
                         </div>
+                        <!-- information sur l'utilisateur -->
+                        <div class="identiteUser">
+                            <div class="nom">
+                                <h5><?php echo(htmlspecialchars($donneesUtilisateur['nom'])); ?>&nbsp;</h5>
+                            </div>
+                            <div class="prenom">
+                                <h5><?php echo(htmlspecialchars($donneesUtilisateur['prenom'])); ?></h5>
+                            </div>
+                        </div>
                     </div>
+                    
                 </nav>
             </div>
         </header>
 
         <!-- Section acteur -->
         <section class="acteur">
-            <div class="contenuActeur">
-                <img src="../<?php echo $donneesActeur['logo'] ?>" alt="logo <?php echo $donneesActeur['acteur']?>">
-                <h2><?php echo $donneesActeur['acteur']; ?></h2>
-                <p><?php echo $donneesActeur['description'] ?></p>
+            <div class="acteurContenu">
+                <div class="acteurLogo">
+                    <img src="../<?php echo htmlspecialchars($donneesActeur['logo']); ?>" alt="logo <?php echo htmlspecialchars($donneesActeur['acteur']); ?>" class="logo">
+                </div>
+                <div class="nomActeur">
+                    <h1><?php echo htmlspecialchars($donneesActeur['acteur']); ?></h1>
+                </div>
+                <div class="descriptionActeur">
+                    <p><?php echo $donneesActeur['description'] ?></p>
+                </div>
             </div>
         </section>
 
@@ -119,13 +129,17 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                     $resultatPostActeur->execute(array($idActeur));
 
                 ?>
-                <h2><?php echo $resultatPostActeur->rowCount() ?> Commentaires</h2>
-                <a href="nouveauCommentaire.php?">Nouveau Commentaire</a>
+                <div class="nombreCommentaires">
+                    <h2><?php echo $resultatPostActeur->rowCount() ?> Commentaires.</h2> 
+                </div>
+                <div class="newCommentaire">
+                    <a href="#">Nouveau Commentaire</a>
+                </div>
                 <div class="likeDislikeForm">
                     <form action="likeDislikeActeur.php" class="likeDislikeForm" method="POST">
-                        <p><?php echo number_format($noteVote, 2, '.', ',') ?></p>
-                        <input type="submit" name="like" alt="like icone" src="../img/like.png" value="true" />
-                        <input type="submit" name="dislike" alt="dislike icone" src="../img/disLike.png"value="false" />
+                        <p><?php echo number_format($noteVote, 2, '.', ',') ?> , <?php echo $voteTotale; ?> vote(s)</p>
+                        <button type="submit" name="like" alt="like icone" class="like"><img src="../img/like.png" alt="icone like"></button>
+                        <button type="submit" name="dislike" alt="dislike icone" class="dislike"><img src="../img/disLike.png" alt="dislike icone"></button>
                     </form>
                 </div>
                 <div class="newPostForm">
@@ -135,8 +149,8 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                         <input type="submit" id="submit" value="Ajouter">
                     </form>
                 </div>
-
-                <?php
+                <div class="dernierCommentaires">
+                    <?php
                     while ($donneesPostActeur = $resultatPostActeur->fetch())
                     {
                     ?>
@@ -149,20 +163,24 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                     }
                     $resultatPostActeur->closeCursor();
                 ?>
+                </div>
             </div>
         </section>
-
-        <!-- Footer du site -->
-        <footer>
-            <ul>
-                <li><a href="mentionsLegales.php">Mentions légales</a></li>
-                <li>
-                    <p>|</p>
-                </li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </footer>
+        <div class="siteFooter">
+            <!-- Footer -->
+            <footer class="page-footer font-small">
+                <div class="copyright">
+                    <p>&copy 2020 - GBAF</p>
+                </div>
+                <div class="liensFooter">
+                    <a href="mentionsLegales.php" class="mentionsLegales">| Mentions légales |</a>
+                    <a href="contact.php" class="contact">Contact |</a>
+                </div>
+            </footer>
+        </div>
+    
     </div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

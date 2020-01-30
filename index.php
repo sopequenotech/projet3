@@ -37,12 +37,12 @@ $resultatInfoUtilisateur->closeCursor();
         <!-- Header du site -->
         <header>
             <div class="barreDeNavigation">
-                <nav class="navbar fixed-top col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="logo col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <a href="index.php"><img src="img/logoGBAF100_100.png" alt=""></a>&nbsp;
+                <nav class="navbar fixed-top">
+                    <div class="logo">
+                        <a href="index.php"><img src="img/logoGbafOpenclassrooms.png" alt="" class="logoGbaf"></a>&nbsp;
                     </div>
-                    <div class="username col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <div class="dropdown col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                    <div class="username">
+                        <div class="dropdown">
                             <button class="boutonsMenu"><img src="img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
                             <div class="dropdown-content">
                                 <a class="dropdown-item" href="php/parametreUser.php"><img src="img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
@@ -51,7 +51,7 @@ $resultatInfoUtilisateur->closeCursor();
                             </div>
                         </div>
                         <!-- information sur l'utilisateur -->
-                        <div class="identiteUser col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="identiteUser">
                             <div class="nom">
                                 <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
                             </div>
@@ -65,7 +65,7 @@ $resultatInfoUtilisateur->closeCursor();
             </div>
         </header>
         <!-- Section présentation -->
-        <section class="presentation col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <section class="presentation">
             <img src="img/bruno-adamo-WBYKlk-awg0-unsplash.jpg" alt="place de la bourse bordeaux" class="imgPresentation">
             <div class="textePresentation">
                 <div class="descriptionGbaf">
@@ -91,10 +91,10 @@ $resultatInfoUtilisateur->closeCursor();
                             {
                             ?>
                     <div class="acteur">
-                        <div class="logoActeur col-md-3">
+                        <div class="logoActeur">
                             <img src="<?php echo $donneesActeurs['logo'] ?>" alt="logo acteur">
                         </div>
-                        <div class="contenuActeurDescript col-md-7">
+                        <div class="contenuActeurDescript">
                             <h3>
                                 <?php echo $donneesActeurs['acteur'] ?>
                             </h3>
@@ -109,7 +109,7 @@ $resultatInfoUtilisateur->closeCursor();
                                         ?>
                             </p>
                         </div>
-                        <div class="lienActeur col-md-2">
+                        <div class="lienActeur">
                             <a href="php/acteurPage.php?idActeur=<?php echo $donneesActeurs['id_acteur'] ?>">Lire
                                 suite</a>
                         </div>
@@ -130,8 +130,8 @@ $resultatInfoUtilisateur->closeCursor();
                 <p>&copy 2020 - GBAF</p>
             </div>
             <div class="liensFooter">
-                <a href="mentionsLegales.php" class="mentionsLegales">Mentions légales</a>
-                <a href="php/contact.php" class="contact">Contact</a>
+                <a href="php/mentionsLegales.php" class="mentionsLegales">| Mentions légales |</a>
+                <a href="php/contact.php" class="contact">Contact |</a>
             </div>
         </footer>
     </div>

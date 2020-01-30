@@ -43,52 +43,51 @@ $idUser = $_SESSION['idUser'];
         <!-- Header du site -->
         <header>
             <div class="barreDeNavigation">
-                <nav class="navbar fixed-top col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="logo col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <a href="../index.php"><img src="../img/LogoGbaf50_50_blanc.png" alt=""></a>
+                <nav class="navbar fixed-top">
+                    <div class="logo">
+                        <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="" class="logoGbaf"></a>&nbsp;
                     </div>
-                    <div class="username col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <div class="dropdown col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                            <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur"
-                                    class="iconeUser"></button>
+                    <div class="username">
+                        <div class="dropdown">
+                            <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png"
-                                        alt="icone de parametrege du compte"> Profil</a>
+                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
                                 <div class="divider"></div>
-                                <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png"
-                                        alt="icone de deconnexion du site"> Déconnexion</a>
+                                <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
                         </div>
                         <!-- information sur l'utilisateur -->
-                        <div class="identiteUser col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                            <div class="navNom">
+                        <div class="identiteUser">
+                            <div class="nom">
                                 <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
                             </div>
-                            <div class="navPrenom">
+                            <div class="prenom">
                                 <h5><?php echo($donneesUtilisateur['prenom']) ?></h5>
                             </div>
                         </div>
                     </div>
-
+                    
                 </nav>
             </div>
         </header>
         <!-- Contenue de la page user parametre -->
         <div class="contenuProfil container-fluid">
             <!-- Contenue des informations sur l'utilisateur -->
-            <div class="contenuUser col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="contenuUser">
                 <!-- information de l'utilisateur -->
                 <div class="informationsUser">
-                    <div class="nom">
-                        <h4>Nom : </h4>
-                        <p><?php echo $donneesUtilisateur['nom'] ?></p>
-                    </div>
-                    <div class="prenom">
-                        <h4>Prénom : </h4>
-                        <p><?php echo $donneesUtilisateur['prenom'] ?></p>
+                    <div class="nomPrenom">
+                        <div class="nom">
+                            <h4>Nom  </h4>
+                            <p><?php echo $donneesUtilisateur['nom'] ?></p>
+                        </div>
+                        <div class="prenom">
+                            <h4>Prénom  </h4>
+                            <p><?php echo $donneesUtilisateur['prenom'] ?></p>
+                        </div>
                     </div>
                     <div class="contenuUsername">
-                        <h4>Nom d'utilisateur : </h4>
+                        <h4>Nom d'utilisateur  </h4>
                         <p><?php echo $donneesUtilisateur['username'] ?></p>
                     </div>
                     <div class="modificationProfil">
@@ -107,12 +106,12 @@ $idUser = $_SESSION['idUser'];
                                         </button>
                                     </div>
                                     <div class="modal-body" style="padding:40px 50px;">
-                                        <form action="modificationInfosUser.php" method="POST">
+                                        <form action="" method="POST">
                                             <!-- Champs utilisateur -->
                                             <div class="modificationNom">
                                                 <label><b>Nom d'utilisateur</b></label>
                                                 <br>
-                                                <input type="text" placeholder="Entrer le nouveau nom d'utilisateur"
+                                                <input type="text" value=" <?php echo $_SESSION['username']; ?> "
                                                     name="username">
                                             </div>
                                             <!-- Champ Mot de passe -->
@@ -144,6 +143,29 @@ $idUser = $_SESSION['idUser'];
                                             </div>
                                             <input type="submit" class="btn btn-success btn-block" value="Modifier le profil">
                                         </form>
+                                        <p>
+                                            <?php 
+                                            // verification des données du formulaire
+                                            if (!empty($_POST['username']) && !empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['secretReponse']))
+                                            {
+                                                // creation de variables
+                                                $newUsername = htmlspecialchars($_POST['username']);
+                                                $newPassword1 = htmlspecialchars($_POST['password1']);
+                                                $newPassword2 = htmlspecialchars($_POST['password2']);
+                                                $newSecretQuestion = htmlspecialchars($_POST['secretQuestion']);
+                                                $newResponseSecret = htmlspecialchars($_POST['secretReponse']);
+
+                                                if ($newPassword1 == $newPassword2)
+                                                {
+                                                    // requete permettant de mettre à jour les infos de l'utilisateur
+                                                    $requeteUpdateUser = $bdd->prepare("UPDATE account SET username=?, password=?, question=?, reponse=? WHERE username=?");
+                                                        $requeteUpdateUser->execute(array($newUsername, $newPassword1, $newSecretQuestion, $newResponseSecret, $username));
+                                                        echo "Informations du compte modifiés.";
+                                                }
+
+                                            }
+                                             ?>
+                                        </p>    
                                     </div>
                                     <div class="modal-footer">
                                         <input type="submit" class="btn btn-danger btn-default btn-block" data-dismiss="modal" href="modificationInfosUser.php" value="Annuler">
@@ -171,14 +193,14 @@ $idUser = $_SESSION['idUser'];
                                 // determination du lien du logo de l'acteur
                                 $idActeur = $donneesActeursLiker['id_acteur'];
 
-                                $requeteLienLogoActeur = "SELECT logo FROM acteur WHERE id_acteur=?";
+                                $requeteLienLogoActeur = "SELECT * FROM acteur WHERE id_acteur=?";
                                 $resultatLienLogo = $bdd->prepare($requeteLienLogoActeur);
                                 $resultatLienLogo->execute(array($idActeur));
-                                $lienLogo = $resultatLienLogo->fetch();
+                                $donneesActeursLiker = $resultatLienLogo->fetch();
                                 $resultatLienLogo->closeCursor();
                                 ?>
                                 <div class="logoActeur">
-                                    <img src="../<?php echo $lienLogo['logo']; ?>">
+                                    <a href="acteurPage.php?idActeur=<?php echo $donneesActeursLiker['id_acteur'] ?>"><img src="../<?php echo $donneesActeursLiker['logo']; ?>"></a>
                                 </div>
                                 <?php
 
@@ -189,9 +211,10 @@ $idUser = $_SESSION['idUser'];
                 </div>
                 <!-- liste des derniers commentaires et possibilité de les supprimer -->
                 <div class="dernierCommentaires">
+                    <h3>Derniers commentaires :</h3>
                     <?php 
                         // on recupere les commentaire de l'utilisateur
-                        $requetePost = "SELECT * FROM post WHERE id_user=?";
+                        $requetePost = "SELECT * FROM post WHERE id_user=? ORDER BY id_post DESC LIMIT 0, 3";
                         $resultatPost = $bdd->prepare($requetePost);
                         $resultatPost->execute(array($idUser));
 
@@ -199,8 +222,12 @@ $idUser = $_SESSION['idUser'];
                         {
                         ?>
                         <div class="postUser">
-                            <p>Date : <?php echo $donneesPostUser['date_add']; ?></p>
-                            <p>Commentaire : <?php echo $donneesPostUser['post']; ?></p>
+                            <div class="date">
+                                <h5>Date :</h5><p><?php echo $donneesPostUser['date_add']; ?></p>
+                            </div>
+                            <div class="commentaire">
+                                <h5>Commentaire :</h5><p><?php echo $donneesPostUser['post']; ?></p>
+                            </div>
                         </div>
                         <?php
                         }
@@ -209,7 +236,7 @@ $idUser = $_SESSION['idUser'];
                 </div>
             </div>
             <!-- Image de l'utilisateur -->
-            <div class="imageUser col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="imageUser">
                 <img src="../img/imageUser/imageUser.jpg" alt="image banque de la page de profil" class="imageProfil">
 
             </div>
@@ -223,8 +250,8 @@ $idUser = $_SESSION['idUser'];
             <p>&copy 2020 - GBAF</p>
         </div>
         <div class="liensFooter">
-            <a href="mentionsLegales.php" class="mentionsLegales">Mentions légales</a>
-            <a href="contact.php" class="contact">Contact</a>
+            <a href="mentionsLegales.php" class="mentionsLegales">| Mentions légales</a>
+            <a href="contact.php" class="contact">| Contact |</a>
         </div>
     </footer>
     <!-- Optional JavaScript -->
