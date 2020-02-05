@@ -15,15 +15,20 @@
                 <!-- Formulaire de connexion -->
                 <div class="loginForm">
                     <form action="verification.php" method="POST">
-                        <span><?php 
-                        if (isset($_GET['succes']) && $_GET['succes'] == true)
-                        {
-                            echo "<h2> Vous êtes bien inscrit, vous pouvez vous connecter <h2>";
-                        }
-                        ?></span>
                         <!-- Titre login form -->
                         <div class="logoHeader">
                             <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="logo gbaf" class="logo"></a>
+                            <?php 
+                                if (isset($_GET['succes']) && $_GET['succes'] == true) 
+                                {
+                                    echo ("<span class=".'labelError'.">Inscription réussi. Connectez-vous.</span>");
+                                } elseif (isset($_GET['passwordChange']) && $_GET['passwordChange'] == true) 
+                                {
+                                    echo ("<span class=".'labelError'.">Mot de passe modifier. Connectez-vous</span>");
+                                }
+
+                             ?>
+
                         </div>
                         <!-- Champs utilisateur -->
                         <div class="username">

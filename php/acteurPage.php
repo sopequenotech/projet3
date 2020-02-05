@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_TIME, "fr_FR");
 session_start();
 
 if(!isset($_SESSION['username']))
@@ -75,25 +76,33 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
     <div class="container-fluid">
         <!-- Header du site -->
         <header>
+            <!-- Barre de navigation -->
             <div class="barreDeNavigation">
                 <nav class="navbar fixed-top">
                     <div class="logo">
                         <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="" class="logoGbaf"></a>&nbsp;
                     </div>
+                    <!-- Icone user parametre du profil et deconnexion
+                     -->
                     <div class="username">
                         <div class="dropdown">
                             <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
+                            <!-- Contenu de l'icone user -->
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
+                                <!-- Parametre du compte -->
+                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Paramètres du compte</a>
                                 <div class="divider"></div>
+                                <!-- Deconnexion de l'utilisateur -->
                                 <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
                         </div>
                         <!-- information sur l'utilisateur -->
                         <div class="identiteUser">
+                            <!-- Nom de l'utilisateur -->
                             <div class="nom">
                                 <h5><?php echo(htmlspecialchars($donneesUtilisateur['nom'])); ?>&nbsp;</h5>
                             </div>
+                            <!-- Prénom de l'utilisateur -->
                             <div class="prenom">
                                 <h5><?php echo(htmlspecialchars($donneesUtilisateur['prenom'])); ?></h5>
                             </div>
@@ -106,13 +115,17 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
 
         <!-- Section acteur -->
         <section class="acteur">
+            <!-- Contenu de la section acteur -->
             <div class="acteurContenu">
+                <!-- Logo de l'acteur -->
                 <div class="acteurLogo">
                     <img src="../<?php echo htmlspecialchars($donneesActeur['logo']); ?>" alt="logo <?php echo htmlspecialchars($donneesActeur['acteur']); ?>" class="logo">
                 </div>
+                <!-- Nom de l'acteur -->
                 <div class="nomActeur">
                     <h1><?php echo htmlspecialchars($donneesActeur['acteur']); ?></h1>
                 </div>
+                <!-- Description complete de l'acteur -->
                 <div class="descriptionActeur">
                     <p><?php echo $donneesActeur['description'] ?></p>
                 </div>
@@ -121,49 +134,94 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
 
         <!-- Section commentaire acteur -->
         <section class="commentaireAnnonce">
+            <!-- Contenu de la section des commentaires de l'acteur -->
             <div class="contenuCommentaire">
-                <?php
-                    // on recupere les commentaire de l'acteur 
-                    $requetePost = "SELECT * FROM post WHERE id_acteur=?";
-                    $resultatPostActeur = $bdd->prepare($requetePost);
-                    $resultatPostActeur->execute(array($idActeur));
+                <!-- Nombre de commentaire bouton nouveau commentaire et vote acteur -->
+                <div class="headerContenuCommentaire">
+                    <!-- Nombre de commentaire de l'acteur -->
+                    <div class="xCommentaire">
+                        <?php
+                            // on recupere les commentaire de l'acteur 
+                            $requetePost = "SELECT * FROM post WHERE id_acteur=?";
+                            $resultatPostActeur = $bdd->prepare($requetePost);
+                            $resultatPostActeur->execute(array($idActeur));
 
-                ?>
-                <div class="nombreCommentaires">
-                    <h2><?php echo $resultatPostActeur->rowCount() ?> Commentaires.</h2> 
-                </div>
-                <div class="newCommentaire">
-                    <a href="#">Nouveau Commentaire</a>
-                </div>
-                <div class="likeDislikeForm">
-                    <form action="likeDislikeActeur.php" class="likeDislikeForm" method="POST">
-                        <p><?php echo number_format($noteVote, 2, '.', ',') ?> , <?php echo $voteTotale; ?> vote(s)</p>
-                        <button type="submit" name="like" alt="like icone" class="like"><img src="../img/like.png" alt="icone like"></button>
-                        <button type="submit" name="dislike" alt="dislike icone" class="dislike"><img src="../img/disLike.png" alt="dislike icone"></button>
-                    </form>
-                </div>
-                <div class="newPostForm">
-                    <form action="nouveauCommentaire.php" method="POST">
-                        <label><b>Nouveau commentaire</b></label>
-                        <input type="text" placeholder="Entrer votre commentaire" name="nouveauCommentaire">
-                        <input type="submit" id="submit" value="Ajouter">
-                    </form>
-                </div>
-                <div class="dernierCommentaires">
-                    <?php
-                    while ($donneesPostActeur = $resultatPostActeur->fetch())
-                    {
-                    ?>
-                    <div class="postActeur">
-                        <p>Prénom = <?php echo $donneesUtilisateur['prenom'] ?></p>
-                        <p>Date = <?php echo $donneesPostActeur['date_add'] ?></p>
-                        <p>Texte = <?php echo $donneesPostActeur['post'] ?></p>
+                        ?>
+                        <div class="nombreCommentaires">
+                            <h2><?php echo $resultatPostActeur->rowCount() ?> Commentaires.</h2> 
+                        </div>
                     </div>
-                    <?php
-                    }
-                    $resultatPostActeur->closeCursor();
-                ?>
+                    <!-- Bouton nouveau commentaire et vote de l'acteur -->
+                    <div class="newCommentAndLikes">
+                        <!-- Bouton nouveau commentaire -->
+                        <div class="newCommentaire" >
+                            <a onclick="newPost()"><p>Nouveau commentaire</p></a>
+                        </div>
+                        <!-- Vote de l'acteur -->
+                        <div class="likeDislikeForm">
+                            <form action="likeDislikeActeur.php" class="likeDislikeForm" method="POST">
+                                <!-- Nombre de vote de l'acteur -->
+                                <div class="nombreVote">
+                                    <p><?php echo $voteTotale; ?></p>
+                                </div>
+                                <!-- Bouton de vote de l'acteur -->
+                                <div class="boutonsVote">
+                                    <!-- Bouton like -->
+                                    <button type="submit" name="like" alt="like icone" class="like"><img src="../img/icons8-thumbs_up.png" alt="icone like"></button>
+                                    <!-- Bouton dislike -->
+                                    <button type="submit" name="dislike" alt="dislike icone" class="dislike"><img src="../img/icons8-thumbs_up.png" alt="dislike icone"></button>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>   
                 </div>
+                <!-- Formulaire d'ajout de commentaire a l'acteur -->
+                <div class="newPostForm" id="newPost">
+                    <form action="nouveauCommentaire.php" method="POST">
+                        <div>
+                            <label><b>Nouveau commentaire</b></label>
+                        </div>
+                        <!-- Input text d'ajout de commentaire -->
+                        <div>
+                            <input type="text" placeholder="Entrer votre commentaire" name="nouveauCommentaire">
+                        </div>
+                        <!-- Bouton d'ajout de commentaire -->
+                        <div>
+                            <input type="submit" id="submit" value="Ajouter">
+                        </div>
+                    </form>
+                </div>
+                <div class="commentaires">
+                    <div class="dernierCommentaires">
+                        <?php
+                        while ($donneesPostActeur = $resultatPostActeur->fetch())
+                        {
+                        ?>
+                        <div class="postActeur">
+                            <p>Prénom: <?php 
+                                $requeteName = "SELECT prenom FROM account WHERE id_user=?";
+                                $resultatName = $bdd->prepare($requeteName);
+                                $resultatName->execute(array($idUser));
+
+                                if ($resultatName->rowCount() == 1)
+                                {
+                                    $prenom = $resultatName->fetch();
+                                    $resultatName->closeCursor();
+
+                                    return $prenom; 
+                                }
+                                echo $prenom; ?></p>
+                            <p>Date:  <?php echo(strftime("%A %d %B %G", strtotime($donneesPostActeur['date_add'])))  ?></p>
+                            <p>Texte:  <?php echo $donneesPostActeur['post'] ?></p>
+                        </div>
+                        <?php
+                        }
+                        $resultatPostActeur->closeCursor();
+                        ?>
+                    </div>
+                </div>
+                
+                
             </div>
         </section>
         <div class="siteFooter">
@@ -193,6 +251,16 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+    <script>
+function newPost() {
+  var div = document.getElementById("newPost");
+  if (div.style.display === "none") {
+    div.style.display = "flex";
+  } else {
+    div.style.display = "none";
+  }
+}
+</script>
 </body>
 
 </html>
