@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $resultat = $bdd->prepare($requete);
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
-    //$password = sha1($password);
+    $password = sha1($password);
     $resultat->execute(array($username, $password));
     if ($resultat->rowCount() == 1) {
 
