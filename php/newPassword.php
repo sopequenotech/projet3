@@ -4,16 +4,16 @@ session_start();  // démarrage d'une session
 
 
 // on vérifie que les données du formulaire sont présentes
-if (isset($_POST['username']) && isset($_POST['questionSecret']) && isset($_POST['reponseSecret'])); 
+if (!empty($_POST['username']) && !empty($_POST['secretQuestion']) && !empty($_POST['reponseSecret'])); 
 {
     // appel de la connexion a la base de données
     require 'fonctions.php';
     $bdd = getBdd();
     
     // creation de variable
-    $username = $_POST['username'];
-    $questionSecret = $_POST['questionSecret'];
-    $reponseSecret = $_POST['reponseSecret'];
+    $username = htmlspecialchars($_POST['username']);
+    $questionSecret = htmlspecialchars($_POST['secretQuestion']);
+    $reponseSecret = htmlspecialchars($_POST['reponseSecret']);
 
     // verification des information saisie
     $requete = "SELECT * FROM account WHERE username=? AND question=? AND reponse=?";
@@ -66,6 +66,7 @@ if (isset($_POST['username']) && isset($_POST['questionSecret']) && isset($_POST
                 <ul class="inscriptionMotDePass">
                     <li class="connexion"><a href="../index.php">Connexion</a></li>
                     <li class="inscription"><a href="register.php">Inscription</a></li>
+                    <li class="mentionsLegales"><a href="mentionsLegales.php">Mentions légales</a></li>
                 </ul>
             </div>
         </form>

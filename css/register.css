@@ -59,6 +59,9 @@ input[type=submit]:hover {
     color: #fff;
     border: 1px solid #ff0000;
 }
+.labelError {
+    color: #ff0000;
+}
 
 /* Liens en bas du formulaire de connexion*/
 .inscriptionMotDePass {
@@ -77,4 +80,5 @@ a {
 }
 a:hover {
     color: #222222;
+    text-decoration: none;
 }

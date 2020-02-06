@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_TIME, "fr_FR");
 // on definit la session
 session_start();
 if(!isset($_SESSION['username']))
@@ -39,7 +40,7 @@ $idUser = $_SESSION['idUser'];
 </head>
 
 <body>
-    <div class="profil">
+    <div class="profil container-fluid">
         <!-- Header du site -->
         <header>
             <div class="barreDeNavigation">
@@ -51,7 +52,7 @@ $idUser = $_SESSION['idUser'];
                         <div class="dropdown">
                             <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
+                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Paramètres du compte</a>
                                 <div class="divider"></div>
                                 <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
@@ -59,7 +60,7 @@ $idUser = $_SESSION['idUser'];
                         <!-- information sur l'utilisateur -->
                         <div class="identiteUser">
                             <div class="nom">
-                                <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
+                                <h5><?php echo($donneesUtilisateur['nom']) ?></h5>
                             </div>
                             <div class="prenom">
                                 <h5><?php echo($donneesUtilisateur['prenom']) ?></h5>
@@ -92,6 +93,12 @@ $idUser = $_SESSION['idUser'];
                     </div>
                     <div class="modificationProfil">
                         <button type="button" class="btn btn-primary" id="myBtn">Modifier le profil</button>
+                        <?php 
+                            if (isset($_GET['profilModifier']) && $_GET['profilModifier'] == true)
+                            {
+                                echo ("<span class=".'labelMessage'.">Votre profil a été modifier.</span>");
+                            }
+                         ?>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
@@ -106,7 +113,7 @@ $idUser = $_SESSION['idUser'];
                                         </button>
                                     </div>
                                     <div class="modal-body" style="padding:40px 50px;">
-                                        <form action="" method="POST">
+                                        <form action="modifierProfilParametreProfil.php" method="POST">
                                             <!-- Champs utilisateur -->
                                             <div class="modificationNom">
                                                 <label><b>Nom d'utilisateur</b></label>
@@ -142,34 +149,9 @@ $idUser = $_SESSION['idUser'];
                                                 <input type="text" placeholder="Réponse secrete" name="secretReponse" >
                                             </div>
                                             <input type="submit" class="btn btn-success btn-block" value="Modifier le profil">
-                                        </form>
-                                        <p>
-                                            <?php 
-                                            // verification des données du formulaire
-                                            if (!empty($_POST['username']) && !empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['secretReponse']))
-                                            {
-                                                // creation de variables
-                                                $newUsername = htmlspecialchars($_POST['username']);
-                                                $newPassword1 = htmlspecialchars($_POST['password1']);
-                                                $newPassword2 = htmlspecialchars($_POST['password2']);
-                                                $newSecretQuestion = htmlspecialchars($_POST['secretQuestion']);
-                                                $newResponseSecret = htmlspecialchars($_POST['secretReponse']);
-
-                                                if ($newPassword1 == $newPassword2)
-                                                {
-                                                    // requete permettant de mettre à jour les infos de l'utilisateur
-                                                    $requeteUpdateUser = $bdd->prepare("UPDATE account SET username=?, password=?, question=?, reponse=? WHERE username=?");
-                                                        $requeteUpdateUser->execute(array($newUsername, $newPassword1, $newSecretQuestion, $newResponseSecret, $username));
-                                                        echo "Informations du compte modifiés.";
-                                                }
-
-                                            }
-                                             ?>
-                                        </p>    
+                                        </form>   
                                     </div>
-                                    <div class="modal-footer">
-                                        <input type="submit" class="btn btn-danger btn-default btn-block" data-dismiss="modal" href="modificationInfosUser.php" value="Annuler">
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -223,7 +205,7 @@ $idUser = $_SESSION['idUser'];
                         ?>
                         <div class="postUser">
                             <div class="date">
-                                <h5>Date :</h5><p><?php echo $donneesPostUser['date_add']; ?></p>
+                                <h5>Date :</h5><p><?php echo (strftime("%A %d %B %G", strtotime($donneesPostUser['date_add']))); ?></p>
                             </div>
                             <div class="commentaire">
                                 <h5>Commentaire :</h5><p><?php echo $donneesPostUser['post']; ?></p>
@@ -237,7 +219,7 @@ $idUser = $_SESSION['idUser'];
             </div>
             <!-- Image de l'utilisateur -->
             <div class="imageUser">
-                <img src="../img/imageUser/imageUser.jpg" alt="image banque de la page de profil" class="imageProfil">
+                <img src="../img/bruno-adamo-WBYKlk-awg0-unsplash.jpg" alt="image banque de la page de profil" class="imageProfil">
 
             </div>
         </div>

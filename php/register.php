@@ -28,22 +28,31 @@ echo "<h2> Vous n'êtes pas inscrit, vous devez remplir tous les champs. <h2>";
                         <!-- Champs nom -->
                         <div class="nom">
                             <label><b>Nom</b></label>
-                            <input type="text" placeholder="Entrer votre Nom" name="nom" >
+                            <input type="text" placeholder="Entrer votre Nom" name="nom" required>
                         </div>
                         <!-- Champs prenom -->
                         <div class="prenom">
                             <label><b>Prénom</b></label>
-                            <input type="text" placeholder="Entrer votre prénom" name="prenom" >
+                            <input type="text" placeholder="Entrer votre prénom" name="prenom" required>
                         </div>
                         <!-- Champs username -->
                         <div class="username">
                             <label><b>Nom d'utilisateur</b></label>
-                            <input type="text" placeholder="Entrer votre nom d'utilisateur" name="username" >
+                            <input type="text" placeholder="Entrer votre nom d'utilisateur" name="username"required >
+                            <?php 
+                                if (isset($_GET['usernameExist']) && $_GET['usernameExist'] == true)
+                                {
+                                    echo ("<label class=".'labelError'.">Le nom d'utilisateur est déja utilisé ! choisissez en un autre. </label>");
+                                } elseif (isset($_GET['succes']) && $_GET['succes'] == false) 
+                                {
+                                    echo ("<label class=".'labelError'.">L'enrégistrement à échouer. veuillez réessayer s'il vous plait. </label>");    
+                                }
+                             ?>
                         </div>
                         <!-- Champs password -->
                         <div class="password">
                             <label><b>Mot de passe</b></label>
-                            <input type="password" placeholder="Entrer votre mot de passe" name="password" >
+                            <input type="password" placeholder="Entrer votre mot de passe" name="password" required>
                         </div>
                         <!-- Champs secret question -->
                         <div class="secretQuestion">
@@ -59,11 +68,11 @@ echo "<h2> Vous n'êtes pas inscrit, vous devez remplir tous les champs. <h2>";
                         <!-- Champs response secrete -->
                         <div class="responseSecrete">
                             <label>Réponse à la question secrète</label>
-                            <input type="text" placeholder="Réponse secrete" name="secretReponse" >
+                            <input type="text" placeholder="Réponse secrete" name="secretReponse" required>
                         </div>
                         <!-- Bouton d'envoie -->
                         <div class="submitLogin">
-                            <input type="submit" id='submit' value='LOGIN'>
+                            <input type="submit" id='submit' value="S'ENRÉGISTER">
                         </div>
                         <!-- Liens en dessous du formulaire de connexion -->
                         <div class="liensFormLogin">

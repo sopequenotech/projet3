@@ -44,6 +44,7 @@
                             <ul class="inscriptionMotDePass">
                                 <li class="connexion"><a href="../index.php">Connexion</a></li>
                                 <li class="inscription"><a href="register.php">Inscription</a></li>
+                                <li class="mentionsLegales"><a href="mentionsLegales.php">Mentions légales</a></li>
                             </ul>
                         </div>
                     </form>
