@@ -39,42 +39,39 @@ $idUser = $_SESSION['idUser'];
 </head>
 
 <body>
-    <div class="profil">
+    <div class="profil container-fluid">
         <!-- Header du site -->
         <header>
             <div class="barreDeNavigation">
-                <nav class="navbar fixed-top col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="logo col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <a href="../index.php"><img src="../img/LogoGbaf50_50_blanc.png" alt=""></a>
+                <nav class="navbar fixed-top">
+                    <div class="logo">
+                        <a href="../index.php"><img src="../img/logoGbafOpenclassrooms.png" alt="" class="logoGbaf"></a>&nbsp;
                     </div>
-                    <div class="username col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <div class="dropdown col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                            <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur"
-                                    class="iconeUser"></button>
+                    <div class="username">
+                        <div class="dropdown">
+                            <button class="boutonsMenu"><img src="../img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png"
-                                        alt="icone de parametrege du compte"> Profil</a>
+                                <a class="dropdown-item" href="parametreUser.php"><img src="../img/icons8-settings.png" alt="icone de parametrege du compte"> Paramètres du compte</a>
                                 <div class="divider"></div>
-                                <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png"
-                                        alt="icone de deconnexion du site"> Déconnexion</a>
+                                <a class="dropdown-item" href="logout.php"><img src="../img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>
                         </div>
                         <!-- information sur l'utilisateur -->
-                        <div class="identiteUser col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                            <div class="navNom">
+                        <div class="identiteUser">
+                            <div class="nom">
                                 <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
                             </div>
-                            <div class="navPrenom">
+                            <div class="prenom">
                                 <h5><?php echo($donneesUtilisateur['prenom']) ?></h5>
                             </div>
                         </div>
                     </div>
-
+                    
                 </nav>
             </div>
         </header>
         <!-- Contenue de la page contact -->
-        <div class="contenuContactPage container-fluid">
+        <div class="contenuContactPage">
             <!-- Contenue des informations sur l'utilisateur -->
             <div class="contactForm">
                 <form action="" method="POST">
@@ -85,12 +82,12 @@ $idUser = $_SESSION['idUser'];
                     <!-- Champs nom -->
                     <div class="nom">
                         <label><b>nom </b></label>
-                        <input type="text" placeholder="Entrer votre nom (Obligatoire)" name="nom">
+                        <input type="text" placeholder="Entrer votre nom (Obligatoire)" name="nom" required>
                     </div>
                     <!-- Champ mail -->
                     <div class="mail">
                         <label><b>E-mail</b></label>
-                        <input type="email" placeholder="Entrer votre adresse (Obligatoire)" name="mail" >
+                        <input type="email" placeholder="Entrer votre adresse (Obligatoire)" name="mail" required>
                     </div>
                     <!-- Champs sujet -->
                     <div class="mail">
@@ -100,7 +97,7 @@ $idUser = $_SESSION['idUser'];
                     <!-- Champs du message -->
                     <div class="message">
                         <label><b>Méssage</b></label>
-                        <textarea name="message"></textarea>
+                        <textarea name="message" required></textarea>
                     </div>
                     <!-- Bouton d'envoie -->
                     <div class="submitMessage">
@@ -111,10 +108,10 @@ $idUser = $_SESSION['idUser'];
                 //verification des donnée du foemulaire
                 if (!empty($_POST['nom']) && !empty(['mail']) && !empty(['sujet']) && !empty(['message']))
                 {
-                    $from = $_POST['mail'];
+                    $from = htmlspecialchars($_POST['mail']);
                     $to ="contact@projet3.kellysossoe.xyz";
-                    $subject = $_POST['sujet'];
-                    $message = $_POST['message'];
+                    $subject = htmlspecialchars($_POST['sujet']);
+                    $message = htmlspecialchars($_POST['message']);
                     $headers = "From:" . $from;
                     mail($to,$subject,$message, $headers);
                     echo "Méssage envoyer !";
@@ -130,16 +127,18 @@ $idUser = $_SESSION['idUser'];
 
 
     </div>
-    <!-- Footer -->
-    <footer class="page-footer font-small">
-        <div class="copyright">
-            <p>&copy 2020 - GBAF</p>
-        </div>
-        <div class="liensFooter">
-            <a href="mentionsLegales.php" class="mentionsLegales">Mentions légales</a>
-            <a href="contact.php" class="contact">Contact</a>
-        </div>
-    </footer>
+    <div class="siteFooter">
+        <!-- Footer -->
+        <footer class="page-footer font-small">
+            <div class="copyright">
+                <p>&copy 2020 - GBAF</p>
+            </div>
+            <div class="liensFooter">
+                <a href="mentionsLegales.php" class="mentionsLegales">| Mentions légales |</a>
+                <a href="contact.php" class="contact">Contact |</a>
+            </div>
+        </footer>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

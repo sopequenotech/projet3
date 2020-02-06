@@ -55,6 +55,7 @@ $noteVote = ($voteTrue * 5) / $voteTotale;
 
 // données de la session
 $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
+$idUser = $_SESSION['idUser'];
 ?>
 
 
@@ -142,7 +143,7 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                     <div class="xCommentaire">
                         <?php
                             // on recupere les commentaire de l'acteur 
-                            $requetePost = "SELECT * FROM post WHERE id_acteur=?";
+                            $requetePost = "SELECT * FROM post WHERE id_acteur=? ORDER BY id_post DESC LIMIT 0, 3";
                             $resultatPostActeur = $bdd->prepare($requetePost);
                             $resultatPostActeur->execute(array($idActeur));
 
@@ -162,7 +163,7 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                             <form action="likeDislikeActeur.php" class="likeDislikeForm" method="POST">
                                 <!-- Nombre de vote de l'acteur -->
                                 <div class="nombreVote">
-                                    <p><?php echo $voteTotale; ?></p>
+                                    <p><?php echo $voteTrue; ?></p>
                                 </div>
                                 <!-- Bouton de vote de l'acteur -->
                                 <div class="boutonsVote">
@@ -198,21 +199,26 @@ $_SESSION['idUser'] = $donneesUtilisateur['id_user'];
                         {
                         ?>
                         <div class="postActeur">
-                            <p>Prénom: <?php 
-                                $requeteName = "SELECT prenom FROM account WHERE id_user=?";
+                            <div class="prenom">
+                                <h5>Prénom: </h5><p><?php 
+                                $requeteName = "SELECT * FROM account WHERE id_user=?";
                                 $resultatName = $bdd->prepare($requeteName);
-                                $resultatName->execute(array($idUser));
+                                $resultatName->execute(array($donneesPostActeur['id_user']));
 
                                 if ($resultatName->rowCount() == 1)
                                 {
-                                    $prenom = $resultatName->fetch();
+                                    $donneesUser = $resultatName->fetch();
                                     $resultatName->closeCursor();
-
-                                    return $prenom; 
+                                    $prenom = $donneesUser['prenom']; 
                                 }
                                 echo $prenom; ?></p>
-                            <p>Date:  <?php echo(strftime("%A %d %B %G", strtotime($donneesPostActeur['date_add'])))  ?></p>
-                            <p>Texte:  <?php echo $donneesPostActeur['post'] ?></p>
+                            </div>
+                            <div class="date">
+                                <h5>Date: </h5><p>  <?php echo(strftime("%A %d %B %G", strtotime($donneesPostActeur['date_add'])))  ?></p>
+                            </div>
+                            <div class="textes">
+                                <h5>Texte: </h5><p><?php echo $donneesPostActeur['post'] ?></p>
+                            </div>
                         </div>
                         <?php
                         }

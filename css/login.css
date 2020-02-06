@@ -78,3 +78,7 @@ a:hover {
     color: #222222;
     text-decoration: none;
 }
+
+.message {
+    color: green;
+}

@@ -294,12 +294,20 @@ a:hover {
     border: 1px solid #070201;
     border-radius: 5px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
-
+}
+.postActeur:hover {
+    background: #ff0000;
+    color: black;
+    opacity: 1;
+}
+.prenom, .date, .textes {
+    display: flex;
+    
 }
 
-
-
+.prenom p, .date p, .textes p {
+    margin-left: 1%;
+}
 
 
 

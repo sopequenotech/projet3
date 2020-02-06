@@ -45,7 +45,7 @@ $resultatInfoUtilisateur->closeCursor();
                         <div class="dropdown">
                             <button class="boutonsMenu"><img src="img/icons8-male_user.png" alt="utilisateur" class="iconeUser"></button>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="php/parametreUser.php"><img src="img/icons8-settings.png" alt="icone de parametrege du compte"> Profil</a>
+                                <a class="dropdown-item" href="php/parametreUser.php"><img src="img/icons8-settings.png" alt="icone de parametrege du compte"> Paramètres du compte</a>
                                 <div class="divider"></div>
                                 <a class="dropdown-item" href="php/logout.php"><img src="img/icons8-shutdown.png" alt="icone de deconnexion du site"> Déconnexion</a>
                             </div>

@@ -11,8 +11,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     // cette requête permet de récupérer l'utilisateur depuis la BD
     $requete = "SELECT * FROM account WHERE username=? AND password=?";
     $resultat = $bdd->prepare($requete);
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
     $resultat->execute(array($username, $password));
     if ($resultat->rowCount() == 1) {
 
