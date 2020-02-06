@@ -237,8 +237,9 @@ a:hover {
     display: flex;
 }
 
- 
-
+.descriptionBouton {
+    display: flex;
+    flex-direction: row;
 }
 
 /* Responsive Phone */
