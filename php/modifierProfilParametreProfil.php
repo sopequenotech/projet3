@@ -7,7 +7,9 @@
         $username = $_SESSION['username'];
         $newUsername = htmlspecialchars($_POST['username']);
         $newPassword1 = htmlspecialchars($_POST['password1']);
+        $newPassword1 = sha1($newPassword1);
         $newPassword2 = htmlspecialchars($_POST['password2']);
+        $newPassword2 = sha1($newPassword2);
         $newSecretQuestion = htmlspecialchars($_POST['secretQuestion']);
         $newResponseSecret = htmlspecialchars($_POST['secretReponse']);
 

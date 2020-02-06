@@ -13,7 +13,9 @@ if (!empty($_POST['password1']) && !empty($_POST['password2']))
     $bdd = getBdd();
     // creation de variable
     $password1 = htmlspecialchars($_POST['password1']);
+    $password1 = sha1($password1);
     $password2 = htmlspecialchars($_POST['password2']);
+    $password2 = sha1($password2);
 
     // verification des mots de asse saisi
     if($password1 == $password2)

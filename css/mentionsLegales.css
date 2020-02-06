@@ -76,3 +76,40 @@ a:hover {
     justify-content: center;
     text-align: center;
 }
+
+
+/* Responsive tablette */
+
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.container-fluid {
+    background: #eee2da;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.contenuMentionsLegale {
+    margin: 20% auto;
+}
+
+ 
+
+}
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+    
+.contenuMentionsLegale {
+    margin: 40% auto;
+}
+ 
+
+ 
+
+}

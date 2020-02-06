@@ -310,7 +310,61 @@ a:hover {
 }
 
 
+/* Responsive tablette */
 
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.acteur {
+    margin: 20% 5% 0 5%;
+}
+
+ 
+
+}
+
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+
+.headerContenuCommentaire {
+    flex-direction: column;
+}
+.xCommentaire {
+    width: 100%;
+}
+.newCommentAndLikes {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.acteurLogo img {
+    height: 100%;
+}
+.acteurContenu {
+    margin: 35% auto;
+    padding: 5%;
+}
+.descriptionActeur {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.descriptionActeur li {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+
+ 
+
+}
 
 
 

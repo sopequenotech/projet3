@@ -94,24 +94,26 @@ $resultatInfoUtilisateur->closeCursor();
                         <div class="logoActeur">
                             <img src="<?php echo $donneesActeurs['logo'] ?>" alt="logo acteur">
                         </div>
-                        <div class="contenuActeurDescript">
-                            <h3>
-                                <?php echo $donneesActeurs['acteur'] ?>
-                            </h3>
-                            <p>
-                                <?php
+                        <div class="descriptionBouton">
+                            <div class="contenuActeurDescript">
+                                <h3>
+                                    <?php echo $donneesActeurs['acteur'] ?>
+                                </h3>
+                                <p>
+                                    <?php
                                         // portion de la description
                                         $extrait = substr($donneesActeurs['description'], 0, 120);
                                         // trouver le dernier espace de l'extrait
                                         $espace = strrpos($extrait, ' ');
                                         // recupere l'extrait en prenant en compte l'espace
                                         echo substr($extrait, 0, $espace). ' ...';
-                                        ?>
-                            </p>
-                        </div>
-                        <div class="lienActeur">
-                            <a href="php/acteurPage.php?idActeur=<?php echo $donneesActeurs['id_acteur'] ?>">Lire
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="lienActeur">
+                                <a href="php/acteurPage.php?idActeur=<?php echo $donneesActeurs['id_acteur'] ?>">Lire
                                 suite</a>
+                            </div>
                         </div>
                     </div>
                     <?php

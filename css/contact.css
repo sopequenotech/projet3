@@ -178,3 +178,39 @@ input[type=submit]:hover {
     justify-content: center;
 }
 
+/* Responsive tablette */
+
+
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.imageContact {
+    display: none;
+}
+.contactForm {
+    margin-top: 12%;
+}
+ 
+
+}
+
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+    
+.imageContact {
+    display: none;
+}
+.contactForm {
+    margin-top: 25%;
+}
+ 
+
+ 
+
+}

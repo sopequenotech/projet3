@@ -25,7 +25,7 @@
                         <div class="secretQuestion">
                             <label><b>Question secrète</b></label>
                             <br>
-                            <select placeholder="Choisissez votre question secrete" name="secretQuestion">
+                            <select name="secretQuestion">
                                 <option>quelle est votre couleur préférée</option>
                                 <option>quelle est votre ville favorite</option>
                                 <option>quelle est votre équipe sportive favorite</option>
