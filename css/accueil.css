@@ -128,8 +128,7 @@ h2 {
 }
 .imgPresentation {
     width: 100%;
-
-    -webkit-filter: blur(2px);
+    -webkit-filter: blur(.5px);
 
 }
 .col-sm-12, .col-md-12, .col-lg-12, .col-xl-12 {
@@ -165,7 +164,7 @@ h2 {
     align-items: center;
 }
 .lienActeur {
-    width: 10%;
+    width: 20%;
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -192,5 +191,124 @@ a {
 }
 a:hover {
     color: #222222;
+}
+
+/* Responsive tablette */
+
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.container-fluid {
+    background: #eee2da;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.imgPresentation {
+    margin: 1% auto;
+    padding-top: 17%;
+}
+.textePresentation {
+    position: absolute;
+    margin: 10% auto;
+    width: 90%;
+} 
+.acteur {
+    width: 80%;
+    display: flex;
+}
+.logoActeur {
+    width: 40%;
+}
+.descriptionBouton {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.contenuActeurDescript {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.lienActeur {
+    width: 100%;
+    display: flex;
+}
+
+ 
+
+}
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+body {
+    font-size: .9rem;
+}
+
+h1{
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 1.9rem;
+}
+h2 {
+    color: #ff0000;
+    text-align: center;
+    margin: 5% auto;
+    font-size: 1.5rem;
+}
+.presentation {
+    position: inherit;
+    text-align: center;
+    color: white;
+}
+.imgPresentation {
+    margin: 1% auto;
+    padding-top: 100%;
+}
+.textePresentation {
+    position: absolute;
+    margin: 35% auto;
+    width: 100%;
+    border: none;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    background-color: #eee2da;
+    color: #070201;
+} 
+.acteur {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.logoActeur {
+    width: 100%;
+    justify-content: center;
+}
+.descriptionBouton {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.contenuActeurDescript {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.lienActeur {
+    width: 100%;
+    display: flex;
+}
+
+ 
+
+ 
+
 }
 

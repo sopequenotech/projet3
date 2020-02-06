@@ -22,6 +22,7 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username
     $prenom = htmlspecialchars($_POST['prenom']);
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
+    $password = sha1($password);
     $secretQuestion = htmlspecialchars($_POST['secretQuestion']);
     $secretReponse = htmlspecialchars($_POST['secretReponse']);
 

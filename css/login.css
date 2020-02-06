@@ -82,3 +82,41 @@ a:hover {
 .message {
     color: green;
 }
+
+/* Responsive tablette */
+
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.container-fluid {
+    background: #eee2da;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+form {
+    width: 80%;
+}
+
+ 
+
+}
+
+
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+    
+    form {
+        width: 90%;
+    }
+ 
+
+ 
+
+}

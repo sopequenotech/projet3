@@ -103,8 +103,7 @@ $idUser = $_SESSION['idUser'];
                     <div class="submitMessage">
                         <input type="submit" id='submit' value='Envoyer'>
                     </div>
-                </form>
-                <p><?php 
+                    <p><?php 
                 //verification des donnée du foemulaire
                 if (!empty($_POST['nom']) && !empty(['mail']) && !empty(['sujet']) && !empty(['message']))
                 {
@@ -117,6 +116,8 @@ $idUser = $_SESSION['idUser'];
                     echo "Méssage envoyer !";
 
                 } ?></p>
+                </form>
+                
             </div>
             <!-- Image de l'utilisateur -->
             <div class="imageContact col-sm-6 col-md-6 col-lg-6 col-xl-6">

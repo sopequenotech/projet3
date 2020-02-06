@@ -260,4 +260,66 @@ input[type=submit]:hover {
     margin: 2% auto;
 }
 
+/* Responsive tablette */
+
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+
+.container-fluid {
+    background: #eee2da;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.imageProfil {
+    width: 0;
+    display: none;
+}
+
+ 
+
+}
+
+/* Responsive Phone */
+
+@media(max-width: 767px)
+
+{ 
+.username {
+    width: 50%;
+}
+.identiteUser {
+    flex-direction: column;
+}
+
+.contenuProfil {
+    display: flex;
+    flex-direction: column;
+}
+    
+.imageProfil {
+    width: 0;
+    display: none;
+}
+.contenuUser {
+    width: 100%;
+    padding: 2%;
+    margin: 10% auto;
+}
+.informationsUser {
+    margin-top: 30%;
+}
+.acteursLikes {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.postUser {
+    margin: 4%;
+}
+
+ 
+
+}
 
