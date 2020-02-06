@@ -94,7 +94,7 @@ $resultatInfoUtilisateur->closeCursor();
                         <div class="logoActeur">
                             <img src="<?php echo $donneesActeurs['logo'] ?>" alt="logo acteur">
                         </div>
-                        <div class="descriptionBouton">
+                        <div class="descriptionBouton" style="display: flex;">
                             <div class="contenuActeurDescript">
                                 <h3>
                                     <?php echo $donneesActeurs['acteur'] ?>
