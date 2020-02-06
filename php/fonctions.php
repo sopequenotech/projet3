@@ -10,10 +10,4 @@ function getBdd() {
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
-
-function getName($idUser) {
-	$bdd = getBdd();
-	
-}
-
 ?>
