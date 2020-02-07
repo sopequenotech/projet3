@@ -1,4 +1,5 @@
 <?php
+header('Content-Type:text/html;charset=utf-8');
 setlocale(LC_TIME, "fr_FR");
 // on definit la session
 session_start();
