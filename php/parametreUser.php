@@ -206,7 +206,7 @@ $idUser = $_SESSION['idUser'];
                         ?>
                         <div class="postUser">
                             <div class="date">
-                                <h5>Date :</h5><p><?php echo (strftime("%A %d %B %G", strtotime($donneesPostUser['date_add']))); ?></p>
+                                <h5>Date :</h5><p><?php echo (echo utf8_decode()strftime("%A %d %B %G", strtotime($donneesPostUser['date_add']))); ?></p>
                             </div>
                             <div class="commentaire">
                                 <h5>Commentaire :</h5><p><?php echo $donneesPostUser['post']; ?></p>
