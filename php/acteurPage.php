@@ -214,7 +214,7 @@ $idUser = $_SESSION['idUser'];
                                 echo $prenom; ?></p>
                             </div>
                             <div class="date">
-                                <h5>Date: </h5><p>  <?php echo(strftime("%A %d %B %G", strtotime($donneesPostActeur['date_add'])))  ?></p>
+                                <h5>Date: </h5><p>  <?php echo(echo utf8_decode(strftime("%A %d %B %G", strtotime($donneesPostActeur['date_add']))))  ?></p>
                             </div>
                             <div class="textes">
                                 <h5>Texte: </h5><p><?php echo $donneesPostActeur['post'] ?></p>
