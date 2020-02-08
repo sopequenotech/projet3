@@ -64,7 +64,7 @@ $idUser = $_SESSION['idUser'];
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -172,6 +172,9 @@ $idUser = $_SESSION['idUser'];
                                     <!-- Bouton dislike -->
                                     <button type="submit" name="dislike" alt="dislike icone" class="dislike"><img src="../img/icons8-thumbs_up.png" alt="dislike icone"></button>
                                 </div>
+                                <div class="votefalse">
+                                    <p> <?php echo($voteTotale - $voteTrue); ?> </p>
+                                </div>
                             </form>
                         </div> 
                     </div>   
@@ -193,6 +196,16 @@ $idUser = $_SESSION['idUser'];
                     </form>
                 </div>
                 <div class="commentaires">
+                    <!-- Message de 1 commentaire par acteur -->
+                    <div class="infoComment">
+                        <p> <?php 
+                            if (isset($_GET['commentExist']) && $_GET['commentExist'] == true)
+                            {
+                                echo "Vous avez déja commenter ce prestataire vous pouvez supprimez votre commentaire depuis le parametrage de votre profil.";
+                            }
+
+                        ?> </p>
+                    </div>
                     <div class="dernierCommentaires">
                         <?php
                         while ($donneesPostActeur = $resultatPostActeur->fetch())

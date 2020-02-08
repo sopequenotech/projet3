@@ -48,8 +48,8 @@
                         <!-- Liens en dessous du formulaire de connexion -->
                         <div class="liensFormLogin">
                             <ul class="inscriptionMotDePass">
-                                <li class="inscription"><a href="register.php">Inscription</a></li>
                                 <li class="motDePass"><a href="forgotPassword.php">Mot de passe oublié ?</a></li>
+                                <li class="motDePass"><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
                         <!-- Les mentions légales -->

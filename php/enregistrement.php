@@ -1,5 +1,6 @@
 <?php
 
+session_start(); 
 
 // on vérifie que les données du formulaire sont présentes
 if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['secretQuestion']) && !empty($_POST['secretReponse'])) 
@@ -8,15 +9,6 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username
     require 'fonctions.php';
     $bdd = getBdd();
 
-    // on recupere les données des comptes
-    $resultatAccount = $bdd->query("SELECT * FROM account");
-    while ($donneesAccount = $resultatAccount->fetch())
-    {
-        if ($donneesAccount['username'] == $_POST['username']) 
-        {
-            header('Location: register.php?usernameExist=true');
-        }
-    }
     // creation de variable
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
@@ -27,27 +19,27 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['username
     $secretReponse = htmlspecialchars($_POST['secretReponse']);
 
     // cette requête permet d'enregister l'utilisateur sur la BD
-    $requete = $bdd->prepare("INSERT INTO account (nom, prenom, username, password, question, reponse) VALUES(:nom, :prenom, :username, :password, :question, :reponse)");
+    $requete = $bdd->prepare("UPDATE account SET nom = :nom, prenom = :prenom, username = :username1, password = :password1, question = :question, reponse = :reponse WHERE username = :username AND password = :password");
     $requete->execute(array(
         'nom' => $nom,
         'prenom' => $prenom,
-        'username' => $username,
-        'password' => $password,
+        'username1' => $username,
+        'password1' => $password,
         'question' => $secretQuestion,
-        'reponse' => $secretReponse
+        'reponse' => $secretReponse,
+        'username' => $_SESSION['username'],
+        'password' => $_SESSION['password']
     ));
 
-    // on ajoute ses infos en tant que variables de session
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
-    // cette variable indique que l'authentification a réussi
     $authOK = true;
+    $_SESSION['username'] = $username1;
+    $_SESSION['password'] = $password1;
 
 }
 
 if ($authOK == true) 
 {
-    header('Location: login.php?succes=true');
+    header('Location: ../index.php');
 } else 
 {
     header('Location: register.php?succes=false');

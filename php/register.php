@@ -78,6 +78,7 @@ echo "<h2> Vous n'êtes pas inscrit, vous devez remplir tous les champs. <h2>";
                         <div class="liensFormLogin">
                             <ul class="inscriptionMotDePass">
                                 <li class="inscription"><a href="login.php">Connexion</a></li>
+                                <li class="motDePass"><a href="contact.php">Contact</a></li>
                                 <li class="motDePass"><a href="forgotPassword.php">Mot de passe oublié ?</a></li>
                             </ul>
                         </div>
