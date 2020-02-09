@@ -20,7 +20,7 @@ body{
 }
 .username {
     display: flex;
-    width: 16%;
+
     justify-content: flex-end;
 }
 .dropdown {
@@ -64,7 +64,7 @@ body{
     display: flex;
     margin: auto;
     color: #222222;
-    width: 65%;
+    
 }
 
 /* Paramètre du footer */
@@ -126,12 +126,6 @@ a:hover {
 }
 .nomPrenom {
     display: flex;
-}
-.nom {
-    width: 50%;
-}
-.prenom {
-    width: 50%;
 }
 .modificationProfil {
     display: flex;

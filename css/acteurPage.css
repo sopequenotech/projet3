@@ -20,7 +20,7 @@ body{
 }
 .username {
     display: flex;
-
+    width: 15%;
     justify-content: flex-end;
 }
 .dropdown {
