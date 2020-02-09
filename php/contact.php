@@ -1,11 +1,4 @@
 <?php
-// on definit la session
-session_start();
-if(!isset($_SESSION['username']))
-{
-header('Location: login.php');
-exit;
-}
 // appel de la connexion a la base de données
 require 'fonctions.php';
 $bdd = getBdd();
