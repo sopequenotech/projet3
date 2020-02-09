@@ -29,7 +29,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 if (isset($authOK)) 
 {
-    header('Location: ../index.php');
+    $donnees = $resultat->fetch();
+    $resultat->closeCursor();
+    if (!empty($donnees['nom']) && !empty($donnees['prenom']) && !empty($donnees['reponse']))
+    {
+        header('Location: ../index.php');
+    } else 
+    {
+        header('Location: register.php');
+    }
 } else 
 {
     header('Location: login.php');

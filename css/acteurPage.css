@@ -20,7 +20,7 @@ body{
 }
 .username {
     display: flex;
-
+    width: 15%;
     justify-content: flex-end;
 }
 .dropdown {
@@ -284,7 +284,11 @@ a:hover {
     margin: 2% auto;
     padding: 2%;
 }
-
+.infoComment {
+    color: #ff0000;
+    display: flex;
+    justify-content: center;
+}
 
 .postActeur {
     display: flex;

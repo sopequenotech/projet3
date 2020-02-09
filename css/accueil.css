@@ -20,7 +20,7 @@ body{
 }
 .username {
     display: flex;
-
+    width: 15%;
     justify-content: flex-end;
 }
 .dropdown {
@@ -148,11 +148,15 @@ h2 {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .logoActeur {
-    width: 20%;
+    width: 30%;
     margin: 0 auto;
     padding: 0;
     display: flex;
     justify-content: left;
+}
+.descriptionBouton {
+    width: 70%;
+    flex-direction: row;
 }
 .contenuActeurDescript {
     width: 70%;
@@ -160,11 +164,11 @@ h2 {
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: left
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
 }
 .lienActeur {
-    width: 20%;
+    width: 30%;
     margin: 0 auto;
     padding: 0;
     display: flex;

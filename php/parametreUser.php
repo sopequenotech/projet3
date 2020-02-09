@@ -61,7 +61,7 @@ $idUser = $_SESSION['idUser'];
                         <!-- information sur l'utilisateur -->
                         <div class="identiteUser">
                             <div class="nom">
-                                <h5><?php echo($donneesUtilisateur['nom']) ?></h5>
+                                <h5><?php echo($donneesUtilisateur['nom']) ?>&nbsp;</h5>
                             </div>
                             <div class="prenom">
                                 <h5><?php echo($donneesUtilisateur['prenom']) ?></h5>
