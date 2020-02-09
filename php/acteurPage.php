@@ -1,5 +1,6 @@
 <?php
 setlocale(LC_TIME, "fr_FR");
+mysql_set_charset('utf8');
 session_start();
 
 if(!isset($_SESSION['username']))
