@@ -1,5 +1,5 @@
 <?php
-setlocale(LC_TIME, "fr_FR");
+setlocale (LC_TIME, 'fr_FR.UTF8','fra');
 mysqli_set_charset('utf8');
 session_start();
 
