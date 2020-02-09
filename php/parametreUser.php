@@ -1,5 +1,6 @@
 <?php
 setlocale (LC_TIME, 'fr_FR.UTF8','fra');
+mysqli_set_charset('utf8');
 // on definit la session
 session_start();
 if(!isset($_SESSION['username']))
@@ -205,7 +206,7 @@ $idUser = $_SESSION['idUser'];
                         ?>
                         <div class="postUser">
                             <div class="date">
-                                <h5>Date :</h5><p><?php echo utf8_decode(strftime("%A %d %B %G", strtotime($donneesPostUser['date_add']))); ?></p>
+                                <h5>Date :</h5><p><?php echo(strftime("%A %d %B %G", strtotime($donneesPostUser['date_add']))); ?></p>
                             </div>
                             <div class="commentaire">
                                 <h5>Commentaire :</h5><p><?php echo $donneesPostUser['post']; ?></p>
